@@ -11,3 +11,6 @@ Test dummy file 3
 this is for stash sample
 git log
 git log --oneline
+
+
+fetch --demo
