@@ -1,0 +1,26 @@
+---
+- name: Install tomcat 10 on ubuntu 22
+  hosts: ubuntu
+  become: yes
+  tasks:
+    - name: java installation
+      ansible.builtin.apt:
+        name: openjdk-11-jdk
+        update_cache: yes
+        state: present
+    - name: create a tomcat group
+      ansible.builtin.group:
+        name: tomcat
+        state: present      
+    - name: create a tomcat user
+      ansible.builtin.user:
+        name: tomcat
+        create_home: yes
+        group: tomcat
+        home: /opt/tomcat
+        shell: /bin/false
+        state: present
+    - name: download tomcat 10.1.5
+      ansible.builtin.get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.5/bin/apache-tomcat-10.1.5.tar.gz
+        dest: /tmp/        
