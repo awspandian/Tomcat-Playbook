@@ -1,0 +1,13 @@
+---
+- name: install utilites
+  hosts: all
+  tasks: 
+    - name: Install ntpdate
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      become: yes  
+      loop: "{{ packages }}"
+    - name: debug variable
+      ansible.builtin.debug:
+        var: purpose      
