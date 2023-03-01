@@ -1,0 +1,8 @@
+---
+- name: Jinja test
+  hosts: all
+  tasks:
+    - name: create a file with some dynamic values
+      ansible.builtin.template:
+        src: info.txt.j2
+        dest: /tmp/info.txt       
