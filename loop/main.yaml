@@ -6,4 +6,5 @@
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
+      become: yes  
       loop: "{{ packages }}"
